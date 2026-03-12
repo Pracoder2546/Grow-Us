@@ -1,0 +1,349 @@
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(180deg,#0a0014,#1b0033);
+color:white;
+text-align:center;
+animation:fadein 1s ease;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+}
+
+.logo{
+color:#c77dff;
+text-shadow:
+0 0 10px #a64dff,
+0 0 20px #a64dff,
+0 0 40px #a64dff;
+}
+
+/* HERO */
+
+.hero{
+margin-top:120px;
+}
+
+.title{
+font-size:70px;
+color:#c77dff;
+text-shadow:0 0 20px #a64dff;
+animation: glow 2s infinite alternate;
+}
+
+.tagline{
+font-size:20px;
+opacity:0.8;
+}
+
+/* BUTTON */
+
+.mainbtn{
+padding:15px 40px;
+border:none;
+background:#a64dff;
+color:white;
+font-size:18px;
+border-radius:30px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.mainbtn:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px #a64dff;
+}
+
+/* ABOUT */
+
+.rolecard p{
+color:#cfa8ff;
+font-weight:bold; 
+margin-bottom: 80px;
+}
+
+.about{
+margin-top:150px;
+width:60%;
+margin-left:auto;
+margin-right:auto;
+}
+
+/* ROLE CARDS */
+
+.rolecontainer{
+display:flex;
+justify-content:center;
+gap:60px;
+margin-top:100px;
+margin-bottom: 130px;
+}
+
+.rolecard{
+background:#16002e;
+border:2px solid #a64dff;
+padding:40px;
+width:250px;
+border-radius:30px;
+transition:0.3s;
+
+}
+
+.rolecard:hover{
+transform:translateY(-10px);
+box-shadow:0 0 20px #a64dff;
+}
+
+/* FIELD BUTTONS */
+
+.fields{
+margin:40px;
+}
+
+.fieldbtn{
+padding:12px 30px;
+margin:10px;
+border-radius:28px;
+border:none;
+background:#8a2be2;
+color:white;
+cursor:pointer;
+transition:0.3s;
+font-size: 18px;
+}
+
+.search-box {
+    width: 500px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 30px;
+    text-align: center;
+    caret-color: transparent;
+    padding-right: 30px;
+    border: none;
+    outline: none;
+    border-radius: 22px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    font-size: 18px;
+    transition: font-size 3s, background-color 2s, padding 3s, border-radius 3.5s, box-shadow 1s;
+    font-weight: 500;
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 3%);
+    margin-bottom: 12px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.search-box:focus {
+    padding-left: 60px;
+    padding-right: 65px;
+    border-radius: 150px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 20px;
+
+}
+
+input::placeholder {
+  font-size: 18px;
+}
+
+.fieldbtn:hover{
+box-shadow:0 0 15px #b56cff;
+transform:scale(1.1);
+}
+
+/* PITCH CARDS */
+
+.pitches{
+    display:flex;
+justify-content:center;
+gap:40px;
+margin-top:40px;
+}
+
+.pitchcard{
+    background:#16002e;
+    padding:20px;
+    border-radius:20px;
+    width:250px;
+    margin-bottom: 30px;
+    transition:0.3s;
+}
+
+.pitchcard:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 20px #b56cff;
+}
+
+.pitchcard img{
+width:100%;
+border-radius:15px;
+margin-top:10px;
+margin-bottom:10px;
+}
+
+/* FORM */
+
+.pitchform{
+    display:flex;
+    flex-direction:column;
+width:300px;
+margin:auto;
+gap:15px;
+}
+
+input,textarea,select{
+padding:10px;
+border-radius:10px;
+border:none;
+background:#1d003a;
+color:white;
+}
+
+input:focus,textarea:focus{
+outline:none;
+box-shadow:0 0 10px #a64dff;
+}
+
+.submitbtn{
+padding:12px;
+border:none;
+background:#a64dff;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+
+.submitbtn:hover{
+    box-shadow:0 0 20px #c77dff;
+}
+
+/* LEAF ANIMATION */
+
+.leaves{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:-1;
+}
+
+.leaves span{
+position:absolute;
+font-size:30px;
+animation:float linear infinite;
+pointer-events:none;
+}
+
+/* different positions, speeds, and delays */
+
+.leaves span:nth-child(1){
+left:5%;
+animation-duration:7s;
+animation-delay:-2s;
+}
+
+.leaves span:nth-child(2){
+left:18%;
+animation-duration:10s;
+animation-delay:-5s;
+}
+
+.leaves span:nth-child(3){
+left:32%;
+animation-duration:8s;
+animation-delay:-1s;
+}
+
+.leaves span:nth-child(4){
+left:48%;
+animation-duration:11s;
+animation-delay:-6s;
+}
+
+.leaves span:nth-child(5){
+left:63%;
+animation-duration:9s;
+animation-delay:-3s;
+}
+
+.leaves span:nth-child(6){
+left:78%;
+animation-duration:12s;
+animation-delay:-7s;
+}
+
+.leaves span:nth-child(7){
+left:88%;
+animation-duration:8s;
+animation-delay:-4s;
+}
+
+.leaves span:nth-child(8){
+left:95%;
+animation-duration:10s;
+animation-delay:-2s;
+}
+
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+pointer-events:none;
+}
+
+@keyframes float{
+    0%{
+        top:-10%;
+transform:translateX(0px) rotate(0deg);
+opacity:0;
+}
+
+25%{
+    transform:translateX(20px) rotate(90deg);
+}
+;
+50%{
+transform:translateX(-15px) rotate(180deg);
+}
+
+75%{
+transform:translateX(25px) rotate(270deg);
+}
+
+100%{
+top:110%;
+transform:translateX(-20px) rotate(360deg);
+opacity:1;
+}
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px #a64dff;}
+to{text-shadow:0 0 30px #d291ff;}
+}
+
+@keyframes fadein{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
