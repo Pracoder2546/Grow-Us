@@ -1,3 +1,4 @@
+
 const canvas = document.getElementById("particles")
 const ctx = canvas.getContext("2d")
 
@@ -70,3 +71,23 @@ requestAnimationFrame(animate)
 
 init()
 animate()
+
+// Toggle Sign In / Sign Up
+const formTitle = document.getElementById("formTitle");
+const submitBtn = document.getElementById("submitBtn");
+const toggleLink = document.getElementById("toggleLink");
+let isSignIn = true;
+
+toggleLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  isSignIn = !isSignIn;
+  if(isSignIn){
+    formTitle.textContent = "Sign In";
+    submitBtn.textContent = "Sign In";
+    toggleLink.textContent = "Sign Up";
+  } else {
+    formTitle.textContent = "Sign Up";
+    submitBtn.textContent = "Sign Up";
+    toggleLink.textContent = "Sign In";
+  }
+});
