@@ -347,3 +347,129 @@ opacity:1;
 transform:translateY(0);
 }
 }
+
+/* LOGIN/SIGNUP LAYOUT FIXES */
+.login-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.left-panel, .right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+}
+
+.left-panel {
+  background: linear-gradient(135deg, #1b0033, #2c004d);
+  color: #fff;
+  text-align: center;
+}
+
+.left-panel h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px #a64dff;
+}
+
+.left-panel p {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 400px;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.left-panel img {
+  width: 250px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.right-panel {
+  background: transparent; /* let gradient + particles show behind */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  background: #1d003a;
+  padding: 50px 40px;
+  border-radius: 30px;
+  box-shadow: 0 0 25px rgba(166, 77, 255, 0.7);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-card h2 {
+  margin-bottom: 30px;
+  color: #c77dff;
+  font-size: 32px;
+}
+
+.login-card input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  background: #2b0040;
+  color: white;
+  font-size: 16px;
+}
+
+.login-card input:focus {
+  outline: none;
+  box-shadow: 0 0 15px #a64dff;
+}
+
+.login-card .mainbtn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 30px;
+  font-size: 18px;
+  background: linear-gradient(90deg, #a64dff, #c77dff);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-card .mainbtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #d291ff;
+}
+
+#toggleText {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #cfa8ff;
+}
+
+#toggleText a {
+  cursor: pointer;
+  color: #a64dff;
+  text-decoration: underline;
+}
+
+/* remove weird bar repeats in gradient */
+body {
+  background: linear-gradient(180deg,#0a0014,#1b0033);
+  overflow-x: hidden;
+}
+
+/* particles stay as before */
+#particles {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+  pointer-events:none;
+}
