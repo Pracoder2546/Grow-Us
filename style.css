@@ -1,13 +1,21 @@
-body{
-margin:0;
-font-family:Arial;
-background:linear-gradient(180deg,#0a0014,#1b0033);
-color:white;
-text-align:center;
-animation:fadein 1s ease;
+/* ================= BASE ================= */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  height: 100%;
+  font-family: Arial;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+
+  background: linear-gradient(180deg, #0a0014, #1b0033);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 
 nav{
 display:flex;
@@ -23,7 +31,7 @@ text-shadow:
 0 0 40px #a64dff;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
 margin-top:120px;
@@ -41,192 +49,60 @@ font-size:20px;
 opacity:0.8;
 }
 
-/* BUTTON */
-
-.mainbtn{
-padding:15px 40px;
-border:none;
-background:#a64dff;
-color:white;
-font-size:18px;
-border-radius:30px;
-cursor:pointer;
-transition:0.3s;
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.mainbtn:hover{
-transform:scale(1.1);
-box-shadow:0 0 20px #a64dff;
+.password-wrapper input {
+  flex: 1;
+  padding-right: 40px; /* space for button */
 }
 
-/* ABOUT */
-
-.rolecard p{
-color:#cfa8ff;
-font-weight:bold; 
-margin-bottom: 80px;
+#togglePassword {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+  margin-right: 5px;
 }
 
-.about{
-margin-top:150px;
-width:60%;
-margin-left:auto;
-margin-right:auto;
+.password-wrapper input {
+  flex: 1;
+  padding-right: 50px;  /* space for the emoji button */
+  box-sizing: border-box; /* ensures padding doesn’t make it overflow */
 }
 
-/* ROLE CARDS */
-
-.rolecontainer{
-display:flex;
-justify-content:center;
-gap:60px;
-margin-top:100px;
-margin-bottom: 130px;
+.auth-message {
+  display: none;
+  margin-top: 10px;
+  font-size: 14px;
+  color: red; /* for errors */
 }
 
-.rolecard{
-background:#16002e;
-border:2px solid #a64dff;
-padding:40px;
-width:250px;
-border-radius:30px;
-transition:0.3s;
-
+.auth-message.success {
+  color: green;
+}
+/* ================= CONTENT ABOVE ================= */
+.hero, .title, .tagline,
+.rolecontainer, .rolecard, 
+.pitches, .pitchcard,
+.login-container,
+.mainbtn, input, textarea, select {
+  position: relative;   /* enable z-index stacking */
+  z-index: 3;           /* above leaves and particles */
 }
 
-.rolecard:hover{
-transform:translateY(-10px);
-box-shadow:0 0 20px #a64dff;
+.login-card{
+  position: relative;
+  z-index: 1;
 }
 
-/* FIELD BUTTONS */
-
-.fields{
-margin:40px;
-}
-
-.fieldbtn{
-padding:12px 30px;
-margin:10px;
-border-radius:28px;
-border:none;
-background:#8a2be2;
-color:white;
-cursor:pointer;
-transition:0.3s;
-font-size: 18px;
-}
-
-.search-box {
-    width: 500px;
-    padding-top: 18px;
-    padding-bottom: 18px;
-    padding-left: 30px;
-    text-align: center;
-    caret-color: transparent;
-    padding-right: 30px;
-    border: none;
-    outline: none;
-    border-radius: 22px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-    font-size: 18px;
-    transition: font-size 3s, background-color 2s, padding 3s, border-radius 3.5s, box-shadow 1s;
-    font-weight: 500;
-    background-color: hsl(0, 0%, 100%);
-    color: hsl(0, 0%, 3%);
-    margin-bottom: 12px;
-    display:block;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-.search-box:focus {
-    padding-left: 60px;
-    padding-right: 65px;
-    border-radius: 150px;
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
-    padding-top: 16px;
-    padding-bottom: 16px;
-    font-size: 20px;
-
-}
-
-input::placeholder {
-  font-size: 18px;
-}
-
-.fieldbtn:hover{
-box-shadow:0 0 15px #b56cff;
-transform:scale(1.1);
-}
-
-/* PITCH CARDS */
-
-.pitches{
-    display:flex;
-justify-content:center;
-gap:40px;
-margin-top:40px;
-}
-
-.pitchcard{
-    background:#16002e;
-    padding:20px;
-    border-radius:20px;
-    width:250px;
-    margin-bottom: 30px;
-    transition:0.3s;
-}
-
-.pitchcard:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 20px #b56cff;
-}
-
-.pitchcard img{
-width:100%;
-border-radius:15px;
-margin-top:10px;
-margin-bottom:10px;
-}
-
-/* FORM */
-
-.pitchform{
-    display:flex;
-    flex-direction:column;
-width:300px;
-margin:auto;
-gap:15px;
-}
-
-input,textarea,select{
-padding:10px;
-border-radius:10px;
-border:none;
-background:#1d003a;
-color:white;
-}
-
-input:focus,textarea:focus{
-outline:none;
-box-shadow:0 0 10px #a64dff;
-}
-
-.submitbtn{
-padding:12px;
-border:none;
-background:#a64dff;
-color:white;
-border-radius:20px;
-cursor:pointer;
-}
-
-.submitbtn:hover{
-    box-shadow:0 0 20px #c77dff;
-}
-
-/* LEAF ANIMATION */
+/*==================LEAVES===================*/
 
 .leaves{
 position:fixed;
@@ -235,8 +111,9 @@ left:0;
 width:100%;
 height:100%;
 pointer-events:none;
-z-index:-1;
+z-index: 2;
 }
+
 
 .leaves span{
 position:absolute;
@@ -295,14 +172,287 @@ animation-duration:10s;
 animation-delay:-2s;
 }
 
+
+/* ================= BUTTON ================= */
+
+.mainbtn{
+padding:15px 40px;
+border:none;
+background:#a64dff;
+color:white;
+font-size:18px;
+border-radius:30px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.mainbtn:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px #a64dff;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+margin-top:150px;
+width:60%;
+margin-left:auto;
+margin-right:auto;
+}
+
+/* ================= ROLE CARDS ================= */
+
+.rolecontainer{
+display:flex;
+justify-content:center;
+gap:60px;
+margin-top:100px;
+margin-bottom:130px;
+flex-wrap:wrap;
+}
+
+.rolecard{
+background:#16002e;
+border:2px solid #a64dff;
+padding:40px;
+width:250px;
+border-radius:30px;
+transition:0.3s;
+}
+
+.rolecard p{
+color:#cfa8ff;
+font-weight:bold;
+margin-bottom:40px;
+}
+
+.rolecard:hover{
+transform:translateY(-10px);
+box-shadow:0 0 20px #a64dff;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box {
+width:500px;
+padding:18px 30px;
+text-align:center;
+border:none;
+outline:none;
+border-radius:22px;
+box-shadow:0 0 15px rgba(0,0,0,0.6);
+font-size:18px;
+background:white;
+color:black;
+display:block;
+margin:12px auto;
+transition:0.3s;
+}
+
+.search-box:focus{
+border-radius:100px;
+box-shadow:0 5px 8px rgba(0,0,0,0.25);
+font-size:20px;
+}
+
+/* ================= FIELD BUTTONS ================= */
+
+.fields{
+margin:40px;
+}
+
+.fieldbtn{
+padding:12px 30px;
+margin:10px;
+border-radius:28px;
+border:none;
+background:#8a2be2;
+color:white;
+cursor:pointer;
+transition:0.3s;
+font-size:18px;
+}
+
+.fieldbtn:hover{
+box-shadow:0 0 15px #b56cff;
+transform:scale(1.1);
+}
+
+/* ================= PITCH CARDS ================= */
+
+.pitches{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.pitchcard{
+background:#16002e;
+padding:20px;
+border-radius:20px;
+width:250px;
+margin-bottom:30px;
+transition:0.3s;
+}
+
+.pitchcard:hover{
+transform:translateY(-10px);
+box-shadow:0 0 20px #b56cff;
+}
+
+.pitchcard img{
+width:100%;
+border-radius:15px;
+margin:10px 0;
+}
+
+/* ================= FORM ================= */
+
+.pitchform{
+display:flex;
+flex-direction:column;
+width:300px;
+margin:auto;
+gap:15px;
+}
+
+input,textarea,select{
+padding:10px;
+border-radius:10px;
+border:none;
+background:#1d003a;
+color:white;
+}
+
+input:focus,textarea:focus{
+outline:none;
+box-shadow:0 0 10px #a64dff;
+}
+
+.submitbtn{
+padding:12px;
+border:none;
+background:#a64dff;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+
+.submitbtn:hover{
+box-shadow:0 0 20px #c77dff;
+}
+
+/* ================= LOGIN PAGE ================= */
+
+.login-container{
+display:flex;
+min-height:100vh;
+flex-wrap:wrap;
+}
+
+.left-panel, .right-panel{
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:60px;
+}
+
+.left-panel{
+background:transparent;
+text-align:center;
+}
+
+.left-panel h1{
+font-size:48px;
+margin-bottom:20px;
+text-shadow:0 0 15px #a64dff;
+}
+
+.left-panel p{
+font-size:18px;
+max-width:400px;
+margin-bottom:30px;
+opacity:0.9;
+}
+
+.right-panel{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.login-card{
+background:#230146;
+padding:50px 40px;
+border-radius:30px;
+box-shadow:0 0 25px rgba(166,77,255,0.7);
+width:100%;
+max-width:400px;
+text-align:center;
+backdrop-filter:blur(10px);
+}
+
+.login-card h2{
+margin-bottom:30px;
+color:#c77dff;
+font-size:32px;
+}
+
+.login-card input{
+width:100%;
+margin-bottom:20px;
+padding:14px;
+border-radius:15px;
+border:none;
+background:#2b0040;
+color:white;
+margin-left: -15px;
+font-size: 15px;
+}
+
+.login-card .mainbtn{
+width:100%;
+margin-top: 10px;
+}
+
+#toggleText{
+margin-top:15px;
+font-size:14px;
+color:#cfa8ff;
+}
+
+#toggleText a{
+color:#a64dff;
+cursor:pointer;
+text-decoration:underline;
+}
+
+/* ================= PARTICLES ================= */
+
 #particles{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-z-index:-2;
+z-index:3;
 pointer-events:none;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes glow{
+from{text-shadow:0 0 10px #a64dff;}
+to{text-shadow:0 0 30px #d291ff;}
+}
+
+@keyframes fadein{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 @keyframes float{
@@ -331,145 +481,22 @@ opacity:1;
 }
 }
 
-@keyframes glow{
-from{text-shadow:0 0 10px #a64dff;}
-to{text-shadow:0 0 30px #d291ff;}
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+.login-container{
+flex-direction:column;
 }
 
-@keyframes fadein{
-from{
-opacity:0;
-transform:translateY(20px);
+.left-panel, .right-panel{
+padding:30px;
 }
 
-to{
-opacity:1;
-transform:translateY(0);
-}
+.left-panel h1{
+font-size:32px;
 }
 
-/* LOGIN/SIGNUP LAYOUT FIXES */
-.login-container {
-  display: flex;
-  min-height: 100vh;
+.search-box{
+width:90%;
 }
-
-.left-panel, .right-panel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 60px;
-}
-
-.left-panel {
-  background: linear-gradient(135deg, #1b0033, #2c004d);
-  color: #fff;
-  text-align: center;
-}
-
-.left-panel h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
-  text-shadow: 0 0 15px #a64dff;
-}
-
-.left-panel p {
-  font-size: 18px;
-  line-height: 1.6;
-  max-width: 400px;
-  margin-bottom: 30px;
-  opacity: 0.9;
-}
-
-.left-panel img {
-  width: 250px;
-  border-radius: 20px;
-  margin-top: 20px;
-}
-
-.right-panel {
-  background: transparent; /* let gradient + particles show behind */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-card {
-  background: #1d003a;
-  padding: 50px 40px;
-  border-radius: 30px;
-  box-shadow: 0 0 25px rgba(166, 77, 255, 0.7);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
-
-.login-card h2 {
-  margin-bottom: 30px;
-  color: #c77dff;
-  font-size: 32px;
-}
-
-.login-card input {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 15px;
-  border-radius: 15px;
-  border: none;
-  background: #2b0040;
-  color: white;
-  font-size: 16px;
-}
-
-.login-card input:focus {
-  outline: none;
-  box-shadow: 0 0 15px #a64dff;
-}
-
-.login-card .mainbtn {
-  width: 100%;
-  padding: 15px;
-  border-radius: 30px;
-  font-size: 18px;
-  background: linear-gradient(90deg, #a64dff, #c77dff);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.login-card .mainbtn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #d291ff;
-}
-
-#toggleText {
-  margin-top: 15px;
-  font-size: 14px;
-  color: #cfa8ff;
-}
-
-#toggleText a {
-  cursor: pointer;
-  color: #a64dff;
-  text-decoration: underline;
-}
-
-/* remove weird bar repeats in gradient */
-body {
-  background: linear-gradient(180deg,#0a0014,#1b0033);
-  overflow-x: hidden;
-}
-
-/* particles stay as before */
-#particles {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:-2;
-  pointer-events:none;
 }
