@@ -3,7 +3,9 @@ const canvas = document.getElementById("particles");
 
 if (canvas) {
   const ctx = canvas.getContext("2d");
-
+  window.addParticles = function(n) {
+  for (let i = 0; i < n; i++) particles.push(new Particle());
+  }
   // Set initial canvas size
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
