@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grow Us - Login/Signup</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+</head>
+
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <div class="login-container">
+
+    <!-- LEFT SIDE -->
+    <div class="left-panel">
+      <h1>Welcome to 🌱 Grow Us</h1>
+      <p>Discover amazing startups or showcase your innovative ideas. Connect with investors, pitch your vision, and
+        make the future happen!</p>
+      <img src="https://via.placeholder.com/250" alt="Startup graphic">
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right-panel">
+      <div class="login-card">
+        <h2 id="formTitle">Sign In</h2>
+
+        <form id="authForm">
+          <input type="email" placeholder="Email" id="email" required>
+          <div class="password-wrapper">
+            <input type="password" placeholder="Password" id="password" required>
+            <button type="button" id="togglePassword">👁️</button>
+          </div>
+
+          <button type="submit" class="mainbtn" id="submitBtn">Sign In</button>
+
+          <!-- Message container -->
+          <div id="authMessage" class="auth-message"></div>
+        </form>
+
+        <p id="toggleText">
+          Don't have an account? <a href="#" id="toggleLink">Sign Up</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
