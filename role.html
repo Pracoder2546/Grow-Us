@@ -1,50 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grow Us - Login/Signup</title>
+<title>Choose Role - Grow Us</title>
 <link rel="stylesheet" href="style.css">
-
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 </head>
 
 <body>
 
+<nav>
+<h2 class="logo">🌱 Grow Us</h2>
+</nav>
+
 <canvas id="particles"></canvas>
 
-<div class="login-container">
+<h1 class="pageTitle" style="font-size:40px;">Who Are You?</h1>
 
-  <!-- LEFT SIDE -->
-  <div class="left-panel">
-    <h1>Welcome to 🌱 Grow Us</h1>
-    <p>Discover amazing startups or showcase your innovative ideas. Connect with investors, pitch your vision, and make the future happen!</p>
-    <img src="https://via.placeholder.com/250" alt="Startup graphic">
-  </div>
+<div class="rolecontainer">
 
-  <!-- RIGHT SIDE -->
-  <div class="right-panel">
-    <div class="login-card">
-      <h2 id="formTitle">Sign In</h2>
-      
-      <form id="authForm">
-        <input type="email" placeholder="Email" id="email" required>
-        <input type="password" placeholder="Password" id="password" required>
-        
-        <button type="submit" class="mainbtn" id="submitBtn">Sign In</button>
-      </form>
-      
-      <p id="toggleText">
-        Don't have an account? <a href="#" id="toggleLink">Sign Up</a>
-      </p>
-    </div>
-  </div>
+<a href="investor.html" style="text-decoration:none;">
+<div class="rolecard">
+<h2>💰 Investor</h2>
+<p>Browse innovative startups and invest in the future.</p>
+</div>
+</a>
+
+<a href="startup.html" style="text-decoration:none;">
+<div class="rolecard">
+<h2>🚀 Startup Founder</h2>
+<p>Pitch your startup idea and connect with investors.</p>
+</div>
+</a>
 
 </div>
 
 <script src="script.js"></script>
-<script src="firebase-auth.js"></script>
+
 </body>
 </html>
