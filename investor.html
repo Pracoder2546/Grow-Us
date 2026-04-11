@@ -1,60 +1,50 @@
+<!-- investor.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <title>Investor Dashboard</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <canvas id="particles"></canvas>
-<nav>
-<h2 class="logo">🌱 Grow Us</h2>
+<canvas id="particles"></canvas>
 
+<nav class="navbar">
+<h2>Grow Us</h2>
 </nav>
-<input type="text" placeholder="Search for more categories" class="search-box">
-<!-- make a border around it -->
-<h1 class="pageTitle">Investor Dashboard</h1> 
 
-<h3>Select Field</h3>
+<div class="container">
+<h1>Investor Dashboard</h1>
 
-<div class="fields">
+<input type="text" id="search" placeholder="Search startups...">
 
-<button class="fieldbtn">AI</button>
-<button class="fieldbtn">Healthcare</button>
-<button class="fieldbtn">Finance</button>
-<button class="fieldbtn">Education</button>
-<button class="fieldbtn">Green Energy</button>
+<div class="grid" id="startupList">
 
+<div class="card">
+<h3>AI Tutor</h3>
+<p>Smart AI learning assistant</p>
 </div>
 
-<div class="pitches">
-
-<div class="pitchcard">
-
-<h3>Smart AI Tutor</h3>
-<img src="https://via.placeholder.com/200">
-
-<p>AI powered learning assistant for students.</p>
-
-<p>Contact: ai@startup.com</p>
-
+<div class="card">
+<h3>Solar Grid</h3>
+<p>Decentralized solar energy</p>
 </div>
-
-<div class="pitchcard">
-
-<h3>Solar City Grid</h3>
-<img src="https://via.placeholder.com/200">
-
-<p>Decentralized solar power network.</p>
-
-<p>Contact: solar@startup.com</p>
 
 </div>
 
 </div>
 
 <script src="script.js"></script>
-
+<script>
+const search = document.getElementById("search")
+search.addEventListener("input", ()=>{
+let val = search.value.toLowerCase()
+document.querySelectorAll("#startupList .card").forEach(card=>{
+card.style.display = card.innerText.toLowerCase().includes(val) ? "block" : "none"
+})
+})
+</script>
 </body>
 </html>
+
