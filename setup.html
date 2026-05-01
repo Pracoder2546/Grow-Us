@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Setup Profile</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+<h1>Complete Your Profile</h1>
+
+<input type="text" id="username" placeholder="Username">
+<input type="date" id="dob">
+<input type="text" id="photo" placeholder="Profile Image URL">
+
+<button onclick="saveProfile()">Save</button>
+</div>
+
+<script type="module">
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const auth = getAuth();
+const db = getFirestore();
+
+window.saveProfile = async function(){
+  const user = auth.currentUser;
+
+  await updateDoc(doc(db, "users", user.uid), {
+    username: document.getElementById("username").value,
+    dob: document.getElementById("dob").value,
+    photo: document.getElementById("photo").value
+  });
+
+  window.location.href = "index.html";
+};
+</script>
+
+</body>
+</html>
