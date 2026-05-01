@@ -1,4 +1,3 @@
-// script.js
 const canvas = document.getElementById("particles")
 if(canvas){
 const ctx = canvas.getContext("2d")
@@ -6,12 +5,6 @@ canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 let particles = []
-let mouse = {x:null,y:null}
-
-window.addEventListener("mousemove", e=>{
-mouse.x = e.x
-mouse.y = e.y
-})
 
 class Particle{
 constructor(){
@@ -33,9 +26,7 @@ ctx.fill()
 }
 }
 
-function init(){
 for(let i=0;i<80;i++) particles.push(new Particle())
-}
 
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height)
@@ -43,5 +34,26 @@ particles.forEach(p=>{p.update();p.draw()})
 requestAnimationFrame(animate)
 }
 
-init(); animate();
+animate()
 }
+
+window.userRole = data.role;
+
+// ENABLE BUTTON
+document.getElementById("exploreBtn").disabled = false;
+
+window.explore = function(){
+
+  console.log("ROLE:", window.userRole);
+
+  if(window.userRole === "investor"){
+    window.location.href = "investor.html";
+  }
+  else if(window.userRole === "startup"){
+    window.location.href = "startup.html";
+  }
+  else{
+    alert("Please complete your profile first ⚠️");
+  }
+
+};
