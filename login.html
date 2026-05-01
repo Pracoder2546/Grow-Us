@@ -1,58 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grow Us - Login/Signup</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Login - Grow Us</title>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:#0d1117;
+color:white;
+font-family:'Segoe UI',sans-serif;
+overflow:hidden;
+}
+
+.login-container{
+position:relative;
+z-index:1;
+background: rgba(22, 27, 34, 0.85);
+padding:40px;
+border-radius:14px;
+width:320px;
+backdrop-filter: blur(10px);
+border:1px solid #2a2f36;
+box-shadow: 0 0 30px rgba(0,0,0,0.6);
+text-align:center;
+}
+
+h1{
+margin-bottom:20px;
+}
+
+.input-group{
+margin-bottom:15px;
+text-align:left;
+}
+
+.input-group input{
+width:100%;
+padding:10px;
+background:#161b22;
+border:none;
+border-radius:6px;
+color:white;
+}
+
+select{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#161b22;
+border:none;
+color:white;
+border-radius:6px;
+}
+
+button{
+width:100%;
+margin-top:10px;
+padding:10px;
+background:linear-gradient(135deg,#238636,#2ea043);
+border:none;
+border-radius:6px;
+color:white;
+cursor:pointer;
+transition:0.2s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px rgba(46,160,67,0.6);
+}
+
+.switch{
+margin-top:15px;
+font-size:13px;
+opacity:0.7;
+}
+
+.switch a{
+color:#58a6ff;
+cursor:pointer;
+text-decoration:none;
+}
+
+.switch a:hover{
+text-decoration:underline;
+}
+</style>
 </head>
 
-<body>
+<body class="login-page">
 
-  <canvas id="particles"></canvas>
+<!-- 🔥 PARTICLES -->
+<canvas id="particles"></canvas>
 
-  <div class="login-container">
+<div class="login-container">
 
-    <!-- LEFT SIDE -->
-    <div class="left-panel">
-      <h1>Welcome to 🌱 Grow Us</h1>
-      <p>Discover amazing startups or showcase your innovative ideas. Connect with investors, pitch your vision, and
-        make the future happen!</p>
-      <img src="https://via.placeholder.com/250" alt="Startup graphic">
-    </div>
+<h1 id="formTitle">Welcome Back</h1>
 
-    <!-- RIGHT SIDE -->
-    <div class="right-panel">
-      <div class="login-card">
-        <h2 id="formTitle">Sign In</h2>
+<!-- LOGIN -->
+<div id="loginForm">
 
-        <form id="authForm">
-          <input type="email" placeholder="Email" id="email" required>
-          <div class="password-wrapper">
-            <input type="password" placeholder="Password" id="password" required>
-            <button type="button" id="togglePassword">👁️</button>
-          </div>
+<div class="input-group">
+<input type="email" id="loginEmail" placeholder="Email">
+</div>
 
-          <button type="submit" class="mainbtn" id="submitBtn">Sign In</button>
+<div class="input-group">
+<input type="password" id="loginPassword" placeholder="Password">
+</div>
 
-          <!-- Message container -->
-          <div id="authMessage" class="auth-message"></div>
-        </form>
+<button onclick="login()">Login</button>
 
-        <p id="toggleText">
-          Don't have an account? <a href="#" id="toggleLink">Sign Up</a>
-        </p>
-      </div>
-    </div>
+<p class="switch">
+Don't have an account?
+<a onclick="showSignup()">Sign Up</a>
+</p>
 
-  </div>
+</div>
 
-  <script src="script.js"></script>
+<!-- SIGNUP -->
+<div id="signupForm" style="display:none;">
+
+<div class="input-group">
+<input type="email" id="signupEmail" placeholder="Email">
+</div>
+
+<div class="input-group">
+<input type="password" id="signupPassword" placeholder="Password">
+</div>
+
+<select id="role">
+<option value="">Select Role</option>
+<option value="investor">Investor</option>
+<option value="startup">Startup</option>
+</select>
+
+<button onclick="signup()">Sign Up</button>
+
+<p class="switch">
+Already have an account?
+<a onclick="showLogin()">Login</a>
+</p>
+
+</div>
+
+</div>
+
+<!-- 🔥 PARTICLES SCRIPT -->
+<script src="script.js"></script>
+
+<!-- 🔥 FIREBASE -->
+<script type="module">
+import { auth, db } from "./firebase.js";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { setDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// SIGNUP
+window.signup = async () => {
+  try {
+    const email = signupEmail.value;
+    const pass = signupPassword.value;
+    const roleVal = role.value;
+
+    if(!email || !pass){
+      alert("Enter email and password ⚠️");
+      return;
+    }
+
+    if(!roleVal){
+      alert("Select role first ⚠️");
+      return;
+    }
+
+    const userCred = await createUserWithEmailAndPassword(auth, email, pass);
+
+    await setDoc(doc(db, "users", userCred.user.uid), {
+      email,
+      role: roleVal,
+      username: "",
+      photo: ""
+    });
+
+    alert("Account created 🚀");
+
+    window.location.href = "index.html";
+
+  } catch (error) {
+    console.error(error);
+    alert(error.message); // 🔥 THIS SHOWS REAL ERROR
+  }
+};
+// LOGIN
+window.login = async () => {
+  try {
+    await signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value);
+    window.location.href = "index.html";
+  } catch (error) {
+    console.error(error);
+    alert(error.message);
+  }
+};
+</script>
+
+<!-- SWITCH FORMS -->
+<script>
+function showSignup(){
+loginForm.style.display="none";
+signupForm.style.display="block";
+formTitle.innerText="Create Account";
+}
+
+function showLogin(){
+signupForm.style.display="none";
+loginForm.style.display="block";
+formTitle.innerText="Welcome Back";
+}
+</script>
+
 </body>
-
 </html>
