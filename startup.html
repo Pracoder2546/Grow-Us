@@ -1,36 +1,35 @@
-<!-- startup.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Submit Pitch</title>
+<title>Startup</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <canvas id="particles"></canvas>
 
-<nav class="navbar">
-<h2>Grow Us</h2>
-</nav>
-
 <div class="container">
-<h1>Submit Pitch</h1>
+<h1>Submit Your Startup</h1>
 
-<form class="form">
-<input type="text" placeholder="Startup Name">
-<textarea placeholder="Describe your idea"></textarea>
-<select>
-<option>Field</option>
-<option>AI</option>
-<option>Finance</option>
-</select>
-<input type="text" placeholder="Contact">
-<button type="submit">Submit</button>
-</form>
+<input placeholder="Startup Name"><br><br>
+<textarea placeholder="Idea"></textarea><br><br>
+
+<button>Submit</button>
 
 </div>
 
-</body>
 <script src="script.js"></script>
+
+<script type="module">
+import { auth } from "./firebase.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+onAuthStateChanged(auth,(user)=>{
+if(!user){
+window.location.href="login.html";
+}
+});
+</script>
+
+</body>
 </html>
