@@ -1,50 +1,60 @@
-<!-- investor.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Investor Dashboard</title>
+<title>Grow Us</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <canvas id="particles"></canvas>
 
-<nav class="navbar">
+<div class="navbar">
 <h2>Grow Us</h2>
-</nav>
+<div id="userMenu"></div>
+</div>
 
 <div class="container">
-<h1>Investor Dashboard</h1>
-
-<input type="text" id="search" placeholder="Search startups...">
-
-<div class="grid" id="startupList">
-
-<div class="card">
-<h3>AI Tutor</h3>
-<p>Smart AI learning assistant</p>
-</div>
-
-<div class="card">
-<h3>Solar Grid</h3>
-<p>Decentralized solar energy</p>
-</div>
-
-</div>
-
+<h1>Where Startups Meet Investors</h1>
+<button id="exploreBtn" disabled onclick="explore()">Explore</button>
 </div>
 
 <script src="script.js"></script>
-<script>
-const search = document.getElementById("search")
-search.addEventListener("input", ()=>{
-let val = search.value.toLowerCase()
-document.querySelectorAll("#startupList .card").forEach(card=>{
-card.style.display = card.innerText.toLowerCase().includes(val) ? "block" : "none"
-})
-})
+
+<script type="module">
+import { auth, db } from "./firebase.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+onAuthStateChanged(auth, async (user)=>{
+if(!user){
+window.location.href="login.html";
+return;
+}
+
+const snap = await getDoc(doc(db,"users",user.uid));
+const data = snap.data();
+
+userMenu.innerHTML = `
+<span>${data.username || "User"}</span>
+<button onclick="logout()">Logout</button>
+`;
+
+window.role = data.role;
+});
+
+window.logout = async ()=>{
+await signOut(auth);
+window.location.href="login.html";
+};
+
+window.explore = ()=>{
+if(role==="investor"){
+window.location.href="investor.html";
+}else{
+window.location.href="startup.html";
+}
+};
 </script>
+
 </body>
 </html>
-
